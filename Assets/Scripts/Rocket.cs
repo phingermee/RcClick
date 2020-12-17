@@ -16,12 +16,6 @@ public class Rocket : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    private void IncrementScore()
-    {
-        _score++;
-        _scoreText.text = _score.ToString();
-    }
-
     private void SpawnMan()
     {
         Instantiate(_man);
@@ -29,7 +23,7 @@ public class Rocket : MonoBehaviour
 
     private void OnMouseDown()
     {
-        IncrementScore();
+        ScoreController.instance.ChangeScore(ref _scoreText);
         SpawnMan();
         _source.PlayOneShot(_shot);
     }
